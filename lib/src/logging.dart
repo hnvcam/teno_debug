@@ -1,7 +1,6 @@
 import 'dart:async';
 import 'dart:developer';
 
-// ignore: depend_on_referenced_packages
 import 'package:logging/logging.dart';
 
 /// Call this method before any other classes, right after the main() method to start logg filtering

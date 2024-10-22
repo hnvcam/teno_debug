@@ -9,9 +9,9 @@ environment:
 # Add regular dependencies here.
 dependencies:
   # path: ^1.8.0
-
-dev_dependencies:
   logging: any
   bloc: any
+
+dev_dependencies:
   lints: ^4.0.0
   test: ^1.24.0

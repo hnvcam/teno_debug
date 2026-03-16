@@ -74,6 +74,13 @@ class BlocObserverComposite implements BlocObserver {
       element.onTransition(bloc, transition);
     }
   }
+
+  @override
+  void onDone(Bloc bloc, Object? event, [Object? error, StackTrace? stackTrace]) {
+    for (var element in observers) {
+      element.onDone(bloc, event, error, stackTrace);
+    }
+  }
 }
 
 class BlocDebugger implements BlocObserver {
@@ -129,5 +136,16 @@ class BlocDebugger implements BlocObserver {
     printer(
         'transitioning by ${transition.event.runtimeType}:\n\tFrom: ${transition.currentState} \n\tTo: ${transition.nextState}',
         name: bloc.runtimeType.toString());
+  }
+
+  @override
+  void onDone(Bloc<dynamic, dynamic> bloc, Object? event, [Object? error, StackTrace? stackTrace]) {
+    if (!_showLog(bloc)) return;
+    if (error != null) {
+      printer('event ${event.runtimeType} completed with error',
+          error: error, stackTrace: stackTrace, name: bloc.runtimeType.toString());
+    } else {
+      printer('event ${event.runtimeType} completed', name: bloc.runtimeType.toString());
+    }
   }
 }

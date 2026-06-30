@@ -1,3 +1,6 @@
+## 0.2.0
+- Better print out the message.
+
 ## 0.1.0
 
 - Upgrade dependencies
